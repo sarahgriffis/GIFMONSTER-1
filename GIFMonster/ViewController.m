@@ -16,6 +16,7 @@
 
 @property (nonatomic, strong) UIScrollView *container;
 @property (nonatomic, strong) UIImageView *containerImageView;
+@property (nonatomic, strong) FLAnimatedImageView *displayImageView;
 
 @property (nonatomic, strong) NSMutableArray *ourImages;
 
@@ -29,10 +30,14 @@
     // Do any additional setup after loading the view, typically from a nib.
     self.container = [[UIScrollView alloc] initWithFrame:self.view.bounds];
     [self.view addSubview:self.container];
-//
-//    FLAnimatedImage *image = [FLAnimatedImage animatedImageWithGIFData:[NSData dataWithContentsOfURL:[NSURL URLWithString:@"http://raphaelschaad.com/static/nyan.gif"]]];
-//    self.containerImageView = [[FLAnimatedImageView alloc] init];
-//    self.containerImageView.animatedImage = image;
+
+    FLAnimatedImage *image = [FLAnimatedImage animatedImageWithGIFData:[NSData dataWithContentsOfURL:[NSURL URLWithString:@"http://raphaelschaad.com/static/nyan.gif"]]];
+    self.displayImageView = [[FLAnimatedImageView alloc] init];
+    
+
+    self.displayImageView.animatedImage = image;
+    self.displayImageView.frame = CGRectMake(0.0, 0.0, 300.0, 300.0);
+    [self.container addSubview:self.displayImageView];
 
 //    [imageView.animatedImage imageLazilyCachedAtIndex:12];
 //    NSLog(@"frame count: %d", [imageView.animatedImage frameCount]);
@@ -41,27 +46,34 @@
 
     NSLog(@"images: %@", ourImage.images);
 
-
-
-
-    UILabel *myLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 70, 240, 20)];
+    UILabel *myLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 70, self.view.bounds.size.width, 20)];
     myLabel.text = @"HI SARAH!";
+    myLabel.textAlignment = NSTextAlignmentCenter;
     myLabel.font = [UIFont boldSystemFontOfSize:20];
     myLabel.textColor = [UIColor whiteColor];
     [self.container addSubview:myLabel];
     
-    UITextField *textField1 = [[UITextField alloc] initWithFrame:CGRectMake(0, 100, 50, 50)];
-    UITextField *textField2 = [[UITextField alloc] initWithFrame:CGRectMake(25, 175, 50, 50)];
+    UITextField *textField1 = [[UITextField alloc] initWithFrame:CGRectMake(0, 100, self.view.bounds.size.width, 50)];
+    UITextField *textField2 = [[UITextField alloc] initWithFrame:CGRectMake(0, 175, self.view.bounds.size.width, 50)];
     textField1.text = @"text1";
     textField2.text = @"text2";
+    textField1.textAlignment = NSTextAlignmentCenter;
+    textField2.textAlignment = NSTextAlignmentCenter;
     [self.container addSubview:textField1];
     [self.container addSubview:textField2];
     
     
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-    button.frame = CGRectMake(75, 175, 50, 50);
-    button.layer.borderColor = [UIColor redColor].CGColor;
-    button.layer.borderWidth = 0.5f;
+    CGFloat buttonWidth = 125;
+    CGFloat buttonX = (self.view.bounds.size.width/2) - (buttonWidth/2);
+    
+    button.frame = CGRectMake(buttonX, 325, buttonWidth, 35);
+    button.backgroundColor = [UIColor blackColor];
+    button.layer.cornerRadius = 18;
+    button.layer.masksToBounds = YES;
+    [button setTitle:@"SEND" forState:UIControlStateNormal];
+    
+
     
     [self.container addSubview:button];
     [button addTarget:self action:@selector(buttonAction) forControlEvents:UIControlEventTouchUpInside];
@@ -84,10 +96,10 @@
         self.containerImageView = [UIImageView new];
         self.containerImageView.frame = CGRectMake(0.0, 0.0, side, side);
         self.containerImageView.image = image;
-        [self.container addSubview:self.containerImageView];
-        [self.container addSubview:textField1];
-        [self.container addSubview:textField2];
-        [self.container addSubview:myLabel];
+          [self.container addSubview:self.containerImageView];
+          [self.container addSubview:textField1];
+          [self.container addSubview:textField2];
+          [self.container addSubview:myLabel];
 //        [self.container insertSubview:self.containerImageView atIndex:0];
 
         UIGraphicsBeginImageContext(CGSizeMake(side, side));
@@ -99,11 +111,11 @@
         UIImageView *iv = [[UIImageView alloc] initWithImage:screenShot];
         NSLog(@"screenshot: %@", screenShot);
         iv.frame = CGRectMake(0, side * i, side, side);
-        [self.container addSubview:iv];
+        //[self.container addSubview:iv];
         i++;
     }
 
-    self.container.contentSize = CGSizeMake(self.view.frame.size.width, i * side);
+    //self.container.contentSize = CGSizeMake(self.view.frame.size.width, i * side);
 
     self.containerImageView.hidden = YES;
 
