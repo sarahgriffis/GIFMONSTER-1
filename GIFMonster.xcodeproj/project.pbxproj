@@ -14,7 +14,9 @@
 		06E04AFB1B0532FB001FC016 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 06E04AFA1B0532FB001FC016 /* Images.xcassets */; };
 		06E04AFE1B0532FB001FC016 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 06E04AFC1B0532FB001FC016 /* LaunchScreen.xib */; };
 		06E04B0A1B0532FB001FC016 /* GIFMonsterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 06E04B091B0532FB001FC016 /* GIFMonsterTests.m */; };
+		06E04B141B0590B7001FC016 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06E04B131B0590B7001FC016 /* ImageIO.framework */; };
 		4AF2506F0E5BE2C2AAC8FB53 /* libPods-GIFMonster.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F025671374C638A67C1B869 /* libPods-GIFMonster.a */; };
+		EC44BD6F44617A2BECFB1E45 /* UIImage+animatedGIF.m in Sources */ = {isa = PBXBuildFile; fileRef = EC44B13050408A81DBCF81CF /* UIImage+animatedGIF.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,8 +44,11 @@
 		06E04B031B0532FB001FC016 /* GIFMonsterTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GIFMonsterTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		06E04B081B0532FB001FC016 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		06E04B091B0532FB001FC016 /* GIFMonsterTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GIFMonsterTests.m; sourceTree = "<group>"; };
+		06E04B131B0590B7001FC016 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
 		1F025671374C638A67C1B869 /* libPods-GIFMonster.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-GIFMonster.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A8793B3601A3DE0450399FC5 /* Pods-GIFMonster.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GIFMonster.release.xcconfig"; path = "Pods/Target Support Files/Pods-GIFMonster/Pods-GIFMonster.release.xcconfig"; sourceTree = "<group>"; };
+		EC44B13050408A81DBCF81CF /* UIImage+animatedGIF.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+animatedGIF.m"; sourceTree = "<group>"; };
+		EC44B99F91B20DF230FFF6D1 /* UIImage+animatedGIF.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+animatedGIF.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,6 +56,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				06E04B141B0590B7001FC016 /* ImageIO.framework in Frameworks */,
 				4AF2506F0E5BE2C2AAC8FB53 /* libPods-GIFMonster.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -96,6 +102,8 @@
 				06E04AFA1B0532FB001FC016 /* Images.xcassets */,
 				06E04AFC1B0532FB001FC016 /* LaunchScreen.xib */,
 				06E04AED1B0532FB001FC016 /* Supporting Files */,
+				EC44B99F91B20DF230FFF6D1 /* UIImage+animatedGIF.h */,
+				EC44B13050408A81DBCF81CF /* UIImage+animatedGIF.m */,
 			);
 			path = GIFMonster;
 			sourceTree = "<group>";
@@ -129,6 +137,7 @@
 		20B2DBAD443FF0F88EBB042F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				06E04B131B0590B7001FC016 /* ImageIO.framework */,
 				1F025671374C638A67C1B869 /* libPods-GIFMonster.a */,
 			);
 			name = Frameworks;
@@ -281,6 +290,7 @@
 				06E04AF61B0532FB001FC016 /* ViewController.m in Sources */,
 				06E04AF31B0532FB001FC016 /* AppDelegate.m in Sources */,
 				06E04AF01B0532FB001FC016 /* main.m in Sources */,
+				EC44BD6F44617A2BECFB1E45 /* UIImage+animatedGIF.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
