@@ -11,6 +11,7 @@
 #import "UIImage+animatedGIF.h"
 #import <ImageIO/ImageIO.h>
 #import <MobileCoreServices/MobileCoreServices.h>
+#import <MessageUI/MFMessageComposeViewController.h>
 
 @interface ViewController ()
 
@@ -142,6 +143,11 @@
 
 }
 
+- (void)buttonAction
+{
+    [self popSMS];
+}
+
 static void makeAnimatedGif(NSArray *ourImages, NSUInteger frameCount, NSTimeInterval duration) {
 //    static NSUInteger kFrameCount = frameCount;
     float delaytime = roundf((duration/frameCount * 100))/100;
@@ -178,6 +184,35 @@ static void makeAnimatedGif(NSArray *ourImages, NSUInteger frameCount, NSTimeInt
     CFRelease(destination);
 
     NSLog(@"url=%@", fileURL);
+}
+
+- (void)popSMS
+{
+    MFMessageComposeViewController *messageController = [[MFMessageComposeViewController alloc] init];
+//    messageController.messageComposeDelegate = self;
+
+    NSURL *documentsDirectoryURL = [[NSFileManager defaultManager] URLForDirectory:NSDocumentDirectory inDomain:NSUserDomainMask appropriateForURL:nil create:YES error:nil];
+    NSURL *fileURL = [documentsDirectoryURL URLByAppendingPathComponent:@"animated.gif"];
+
+    NSData *imgData = [[NSFileManager defaultManager] contentsAtPath:fileURL];
+    BOOL didAttachImage = [messageController addAttachmentData:imgData typeIdentifier:(__bridge NSString *)kUTTypeGIF filename:@"LOLZ.gif"];
+//    [self.messageController addAttachmentData:gifData typeIdentifier:(__bridge NSString *)kUTTypeGIF filename:@"animated.gif"];
+
+    if (didAttachImage)
+    {
+        // Present message view controller on screen
+        [self presentViewController:messageController animated:YES completion:nil];
+    }
+    else
+    {
+        UIAlertView *warningAlert = [[UIAlertView alloc] initWithTitle:@"Error"
+                                                               message:@"Failed to attach image"
+                                                              delegate:nil
+                                                     cancelButtonTitle:@"OK"
+                                                     otherButtonTitles:nil];
+        [warningAlert show];
+        return;
+    }
 }
 
 - (CGFloat)ratioForImage:(UIImage *)image
