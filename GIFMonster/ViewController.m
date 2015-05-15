@@ -31,17 +31,24 @@
     self.container = [[UIScrollView alloc] initWithFrame:self.view.bounds];
     [self.view addSubview:self.container];
 
-    FLAnimatedImage *image = [FLAnimatedImage animatedImageWithGIFData:[NSData dataWithContentsOfURL:[NSURL URLWithString:@"http://raphaelschaad.com/static/nyan.gif"]]];
+    FLAnimatedImage *image = [FLAnimatedImage animatedImageWithGIFData:[NSData dataWithContentsOfURL:[NSURL URLWithString:@"file:///Users/sarah/Downloads/neonlights_ios_750x1334.gif"]]];
     self.displayImageView = [[FLAnimatedImageView alloc] init];
     
 
     self.displayImageView.animatedImage = image;
-    self.displayImageView.frame = CGRectMake(0.0, 0.0, 300.0, 300.0);
+    //self.displayImageView.frame = CGRectMake(0.0, 0.0, 300.0, 300.0);
+    
+    CGFloat ratio = [self ratioForImage:self.displayImageView.image];
+    
+    self.displayImageView.frame = CGRectMake(0, 0, self.displayImageView.image.size.width * ratio , self.displayImageView.image.size.height * ratio);
     [self.container addSubview:self.displayImageView];
 
 //    [imageView.animatedImage imageLazilyCachedAtIndex:12];
 //    NSLog(@"frame count: %d", [imageView.animatedImage frameCount]);
-    UIImage *ourImage = [UIImage animatedImageWithAnimatedGIFURL:[[NSURL alloc] initWithString:@"http://raphaelschaad.com/static/nyan.gif"]];
+    UIImage *ourImage = [UIImage animatedImageWithAnimatedGIFURL:[[NSURL alloc] initWithString:@"file:///Users/sarah/Downloads/neonlights_ios_750x1334.gif"]];
+    //NeonLights_iOS_750x1334.gif
+    //https://files.slack.com/files-pri/T02JM6XQR-F04SKBSSN/download/neonlights_ios_750x1334.gif
+    //http://raphaelschaad.com/static/nyan.gif
 //    self.containerImageView.image = ourImage;
 
     NSLog(@"images: %@", ourImage.images);
@@ -53,25 +60,36 @@
     myLabel.textColor = [UIColor whiteColor];
     [self.container addSubview:myLabel];
     
-    UITextField *textField1 = [[UITextField alloc] initWithFrame:CGRectMake(0, 100, self.view.bounds.size.width, 50)];
-    UITextField *textField2 = [[UITextField alloc] initWithFrame:CGRectMake(0, 175, self.view.bounds.size.width, 50)];
-    textField1.text = @"text1";
-    textField2.text = @"text2";
+    UITextField *textField1 = [[UITextField alloc] initWithFrame:CGRectMake(0, 406, self.view.bounds.size.width, 50)];
+    UITextField *textField2 = [[UITextField alloc] initWithFrame:CGRectMake(0, 441, self.view.bounds.size.width, 50)];
+    UITextField *textField3 = [[UITextField alloc] initWithFrame:CGRectMake(0, 476, self.view.bounds.size.width, 50)];
+    textField1.text = @"TEXT1";
+    textField2.text = @"TEXT2";
+    textField3.text = @"TEXT3";
+    textField1.font = [UIFont boldSystemFontOfSize:18];
+    textField2.font = [UIFont boldSystemFontOfSize:18];
+    textField3.font = [UIFont boldSystemFontOfSize:18];
+    textField1.textColor = [UIColor redColor];
+    textField2.textColor = [UIColor redColor];
+    textField3.textColor = [UIColor redColor];
     textField1.textAlignment = NSTextAlignmentCenter;
     textField2.textAlignment = NSTextAlignmentCenter;
+    textField3.textAlignment = NSTextAlignmentCenter;
     [self.container addSubview:textField1];
     [self.container addSubview:textField2];
+    [self.container addSubview:textField3];
     
     
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
     CGFloat buttonWidth = 125;
     CGFloat buttonX = (self.view.bounds.size.width/2) - (buttonWidth/2);
     
-    button.frame = CGRectMake(buttonX, 325, buttonWidth, 35);
+    button.frame = CGRectMake(buttonX, self.displayImageView.image.size.height * ratio - 55, buttonWidth, 35);
     button.backgroundColor = [UIColor blackColor];
-    button.layer.cornerRadius = 18;
+    button.layer.cornerRadius = 17;
     button.layer.masksToBounds = YES;
     [button setTitle:@"SEND" forState:UIControlStateNormal];
+    button.titleLabel.font = [UIFont boldSystemFontOfSize:16];
     
 
     
@@ -159,6 +177,17 @@ static void makeAnimatedGif(NSArray *ourImages, NSUInteger frameCount, NSTimeInt
     CFRelease(destination);
 
     NSLog(@"url=%@", fileURL);
+}
+
+- (CGFloat)ratioForImage:(UIImage *)image
+{
+    CGFloat ratio = 1.0;
+    if (image.size.width > image.size.height) {
+        ratio = self.container.frame.size.width / image.size.width;
+    } else {
+        ratio = self.container.frame.size.height / image.size.height;
+    }
+    return ratio;
 }
 
 @end
