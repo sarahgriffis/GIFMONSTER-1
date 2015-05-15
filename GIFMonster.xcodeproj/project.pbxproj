@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0645C6BE1B06475A00A9A9CD /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0645C6BD1B06475A00A9A9CD /* MessageUI.framework */; };
 		06E04AF01B0532FB001FC016 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 06E04AEF1B0532FB001FC016 /* main.m */; };
 		06E04AF31B0532FB001FC016 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 06E04AF21B0532FB001FC016 /* AppDelegate.m */; };
 		06E04AF61B0532FB001FC016 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06E04AF51B0532FB001FC016 /* ViewController.m */; };
@@ -31,6 +32,7 @@
 
 /* Begin PBXFileReference section */
 		0389C5FBAF8601C4D0B397C6 /* Pods-GIFMonster.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GIFMonster.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GIFMonster/Pods-GIFMonster.debug.xcconfig"; sourceTree = "<group>"; };
+		0645C6BD1B06475A00A9A9CD /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		06E04AEA1B0532FB001FC016 /* GIFMonster.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GIFMonster.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		06E04AEE1B0532FB001FC016 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		06E04AEF1B0532FB001FC016 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -56,6 +58,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0645C6BE1B06475A00A9A9CD /* MessageUI.framework in Frameworks */,
 				06E04B141B0590B7001FC016 /* ImageIO.framework in Frameworks */,
 				4AF2506F0E5BE2C2AAC8FB53 /* libPods-GIFMonster.a in Frameworks */,
 			);
@@ -137,6 +140,7 @@
 		20B2DBAD443FF0F88EBB042F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0645C6BD1B06475A00A9A9CD /* MessageUI.framework */,
 				06E04B131B0590B7001FC016 /* ImageIO.framework */,
 				1F025671374C638A67C1B869 /* libPods-GIFMonster.a */,
 			);

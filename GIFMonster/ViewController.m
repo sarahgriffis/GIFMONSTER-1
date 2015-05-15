@@ -11,6 +11,7 @@
 #import "UIImage+animatedGIF.h"
 #import <ImageIO/ImageIO.h>
 #import <MobileCoreServices/MobileCoreServices.h>
+#import <MessageUI/MFMessageComposeViewController.h>
 
 @interface ViewController ()
 
@@ -45,7 +46,7 @@
 
 
     UILabel *myLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 70, 240, 20)];
-    myLabel.text = @"HI SARAH!";
+    myLabel.text = @"HI NAH YO CHILL SON!";
     myLabel.font = [UIFont boldSystemFontOfSize:20];
     myLabel.textColor = [UIColor whiteColor];
     [self.container addSubview:myLabel];
@@ -59,8 +60,8 @@
     
     
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-    button.frame = CGRectMake(75, 175, 50, 50);
-    button.layer.borderColor = [UIColor redColor].CGColor;
+    button.frame = CGRectMake(75, 175, self.view.frame.size.width - 75, 50);
+    button.backgroundColor = [UIColor blueColor];
     button.layer.borderWidth = 0.5f;
     
     [self.container addSubview:button];
@@ -111,6 +112,11 @@
 
 }
 
+- (void)buttonAction
+{
+    [self popSMS];
+}
+
 static void makeAnimatedGif(NSArray *ourImages, NSUInteger frameCount) {
 //    static NSUInteger kFrameCount = frameCount;
 
@@ -145,6 +151,35 @@ static void makeAnimatedGif(NSArray *ourImages, NSUInteger frameCount) {
     CFRelease(destination);
 
     NSLog(@"url=%@", fileURL);
+}
+
+- (void)popSMS
+{
+    MFMessageComposeViewController *messageController = [[MFMessageComposeViewController alloc] init];
+//    messageController.messageComposeDelegate = self;
+
+    NSURL *documentsDirectoryURL = [[NSFileManager defaultManager] URLForDirectory:NSDocumentDirectory inDomain:NSUserDomainMask appropriateForURL:nil create:YES error:nil];
+    NSURL *fileURL = [documentsDirectoryURL URLByAppendingPathComponent:@"animated.gif"];
+
+    NSData *imgData = [[NSFileManager defaultManager] contentsAtPath:fileURL];
+    BOOL didAttachImage = [messageController addAttachmentData:imgData typeIdentifier:(__bridge NSString *)kUTTypeGIF filename:@"LOLZ.gif"];
+//    [self.messageController addAttachmentData:gifData typeIdentifier:(__bridge NSString *)kUTTypeGIF filename:@"animated.gif"];
+
+    if (didAttachImage)
+    {
+        // Present message view controller on screen
+        [self presentViewController:messageController animated:YES completion:nil];
+    }
+    else
+    {
+        UIAlertView *warningAlert = [[UIAlertView alloc] initWithTitle:@"Error"
+                                                               message:@"Failed to attach image"
+                                                              delegate:nil
+                                                     cancelButtonTitle:@"OK"
+                                                     otherButtonTitles:nil];
+        [warningAlert show];
+        return;
+    }
 }
 
 @end
