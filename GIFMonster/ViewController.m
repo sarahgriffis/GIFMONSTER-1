@@ -107,12 +107,14 @@
 
     self.containerImageView.hidden = YES;
 
-    makeAnimatedGif(self.ourImages, self.ourImages.count);
+    makeAnimatedGif(self.ourImages, self.ourImages.count, ourImage.duration);
 
 }
 
-static void makeAnimatedGif(NSArray *ourImages, NSUInteger frameCount) {
+static void makeAnimatedGif(NSArray *ourImages, NSUInteger frameCount, NSTimeInterval duration) {
 //    static NSUInteger kFrameCount = frameCount;
+    float delaytime = roundf((duration/frameCount * 100))/100;
+    
 
     NSDictionary *fileProperties = @{
             (__bridge id)kCGImagePropertyGIFDictionary: @{
@@ -122,7 +124,7 @@ static void makeAnimatedGif(NSArray *ourImages, NSUInteger frameCount) {
 
     NSDictionary *frameProperties = @{
             (__bridge id)kCGImagePropertyGIFDictionary: @{
-                    (__bridge id)kCGImagePropertyGIFDelayTime: @0.02f, // a float (not double!) in seconds, rounded to centiseconds in the GIF data
+                    (__bridge id)kCGImagePropertyGIFDelayTime: [NSNumber numberWithFloat:delaytime], // a float (not double!) in seconds, rounded to centiseconds in the GIF data
             }
     };
 
