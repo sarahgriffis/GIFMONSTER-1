@@ -20,6 +20,8 @@
 @property (nonatomic, strong) FLAnimatedImageView *displayImageView;
 
 @property (nonatomic, strong) NSMutableArray *ourImages;
+@property (nonatomic, strong) UITextField *textField1;
+@property (nonatomic, strong) UITextField *textField2;
 
 @end
 
@@ -29,16 +31,20 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    NSInteger side = 300;
+    
     self.container = [[UIScrollView alloc] initWithFrame:self.view.bounds];
     [self.view addSubview:self.container];
+    
+    self.container.backgroundColor = [UIColor colorWithRed:174/255.0f green:216/255.0f blue:190/255.0f alpha:1.0f];
 
     FLAnimatedImage *image = [FLAnimatedImage animatedImageWithGIFData:[NSData dataWithContentsOfURL:[NSURL URLWithString:@"http://raphaelschaad.com/static/nyan.gif"]]];
     self.displayImageView = [[FLAnimatedImageView alloc] init];
     
 
     self.displayImageView.animatedImage = image;
-    self.displayImageView.frame = CGRectMake(0.0, 0.0, 300.0, 300.0);
-    self.displayImageView.center = self.view.center;
+    self.displayImageView.frame = CGRectMake(self.view.frame.size.width/2 - side/2, 100, side, side);
+
     
     CGFloat ratio = [self ratioForImage:self.displayImageView.image];
     
@@ -60,25 +66,25 @@
     myLabel.textAlignment = NSTextAlignmentCenter;
     myLabel.font = [UIFont boldSystemFontOfSize:20];
     myLabel.textColor = [UIColor whiteColor];
-    [self.container addSubview:myLabel];
+    //[self.container addSubview:myLabel];
     
-    UITextField *textField1 = [[UITextField alloc] initWithFrame:CGRectMake(0, 216, self.view.bounds.size.width, 50)];
-    UITextField *textField2 = [[UITextField alloc] initWithFrame:CGRectMake(0, 421, self.view.bounds.size.width, 50)];
+    self.textField1 = [[UITextField alloc] initWithFrame:CGRectMake(0, 116, self.view.bounds.size.width, 50)];
+    self.textField2 = [[UITextField alloc] initWithFrame:CGRectMake(0, 321, self.view.bounds.size.width, 50)];
     UITextField *textField3 = [[UITextField alloc] initWithFrame:CGRectMake(0, 456, self.view.bounds.size.width, 50)];
-    textField1.text = @"HAPPY BIRTHDAY SARAH";
-    textField2.text = @"FROM HEATHER";
+    self.textField1.text = @"HAPPY BIRTHDAY SARAH!";
+    self.textField2.text = @"FROM HEATHER";
     textField3.text = @"TEXT3";
-    textField1.font = [UIFont boldSystemFontOfSize:18];
-    textField2.font = [UIFont boldSystemFontOfSize:18];
+    self.textField1.font = [UIFont boldSystemFontOfSize:18];
+    self.textField2.font = [UIFont boldSystemFontOfSize:18];
     textField3.font = [UIFont boldSystemFontOfSize:18];
-    textField1.textColor = [UIColor whiteColor];
-    textField2.textColor = [UIColor whiteColor];
+    self.textField1.textColor = [UIColor whiteColor];
+    self.textField2.textColor = [UIColor whiteColor];
     textField3.textColor = [UIColor redColor];
-    textField1.textAlignment = NSTextAlignmentCenter;
-    textField2.textAlignment = NSTextAlignmentCenter;
+    self.textField1.textAlignment = NSTextAlignmentCenter;
+    self.textField2.textAlignment = NSTextAlignmentCenter;
     textField3.textAlignment = NSTextAlignmentCenter;
-    [self.container addSubview:textField1];
-    [self.container addSubview:textField2];
+    [self.container addSubview:self.textField1];
+    [self.container addSubview:self.textField2];
     //[self.container addSubview:textField3];
     
     
@@ -87,11 +93,17 @@
     CGFloat buttonX = (self.view.bounds.size.width/2) - (buttonWidth/2);
     
     button.frame = CGRectMake(buttonX, self.displayImageView.image.size.height * ratio - 75, buttonWidth, 35);
-    button.backgroundColor = [UIColor blackColor];
+    button.backgroundColor = [UIColor colorWithRed:65/255.0f green:102/255.0f blue:79/255.0f alpha:1.0f];
     button.layer.cornerRadius = 17;
     button.layer.masksToBounds = YES;
     [button setTitle:@"SEND" forState:UIControlStateNormal];
     button.titleLabel.font = [UIFont boldSystemFontOfSize:16];
+    [button setTitleColor:[UIColor colorWithRed:223/255.0f green:239/255.0f blue:229/255.0f alpha:1.0f] forState:UIControlStateNormal];
+    
+    UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideKeyBoard)];
+    tapRecognizer.numberOfTouchesRequired = 1;
+    tapRecognizer.numberOfTapsRequired = 1;
+    [self.container addGestureRecognizer:tapRecognizer];
     
 
     
@@ -103,23 +115,23 @@
     self.ourImages = [[NSMutableArray alloc] init];
 
     NSUInteger i = 0;
-    NSInteger side = 300;
+
     for (UIImage *image in ourImage.images) {
         if (self.containerImageView) {
             [self.containerImageView removeFromSuperview];
             self.containerImageView.image = nil;
             self.containerImageView = nil;
-            [textField1 removeFromSuperview];
-            [textField2 removeFromSuperview];
+            [self.textField1 removeFromSuperview];
+            [self.textField2 removeFromSuperview];
             [myLabel removeFromSuperview];
         }
         self.containerImageView = [UIImageView new];
         self.containerImageView.frame = CGRectMake(0.0, 0.0, side, side);
         self.containerImageView.image = image;
           [self.container addSubview:self.containerImageView];
-          [self.container addSubview:textField1];
-          [self.container addSubview:textField2];
-          [self.container addSubview:myLabel];
+          [self.container addSubview:self.textField1];
+          [self.container addSubview:self.textField2];
+          //[self.container addSubview:myLabel];
 //        [self.container insertSubview:self.containerImageView atIndex:0];
 
         UIGraphicsBeginImageContext(CGSizeMake(side, side));
@@ -146,6 +158,12 @@
 - (void)buttonAction
 {
     [self popSMS];
+}
+
+- (void)hideKeyBoard
+{
+    [self.textField1 resignFirstResponder];
+    [self.textField2 resignFirstResponder];
 }
 
 static void makeAnimatedGif(NSArray *ourImages, NSUInteger frameCount, NSTimeInterval duration) {
