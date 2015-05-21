@@ -8,17 +8,21 @@
 
 #import "ViewController.h"
 #import "FLAnimatedImage.h"
+#import "MBProgressHUD.h"
 #import "UIImage+animatedGIF.h"
 #import <ImageIO/ImageIO.h>
 #import <MobileCoreServices/MobileCoreServices.h>
 #import <MessageUI/MFMessageComposeViewController.h>
+#import "GifCollectionViewCell.h"
 
-@interface ViewController () <MFMessageComposeViewControllerDelegate>
+static NSString *CellIdentifier = @"CellIdentifier";
+
+@interface ViewController () <MFMessageComposeViewControllerDelegate, UICollectionViewDataSource>
 
 @property (nonatomic, strong) UIScrollView *container;
 @property (nonatomic, strong) UIImageView *containerImageView;
 @property (nonatomic, strong) UIView *innerContainer;
-@property (nonatomic, strong) FLAnimatedImageView *displayImageView;
+//@property (nonatomic, strong) FLAnimatedImageView *displayImageView;
 
 @property (nonatomic, strong) NSMutableArray *ourImages;
 @property (nonatomic, strong) UITextField *textField1;
@@ -26,7 +30,9 @@
 
 @property (nonatomic, strong) UIImage *ourImage;
 
-@property (nonatomic, assign) CGRect imageFrame;
+//@property (nonatomic, assign) CGRect imageFrame;
+@property (nonatomic, strong) NSArray *dataSource;
+@property (nonatomic, strong) IBOutlet UICollectionView *collectionView;
 
 @end
 
@@ -36,74 +42,105 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
-    NSInteger side = 300;
+    NSMutableArray *gifsArray = [NSMutableArray array];
+    [gifsArray addObject:@"file:///Users/sarah/Desktop/nyan.gif"];
+    [gifsArray addObject:@"file:///Users/sarah/Desktop/tiger_eating_meat.gif"];
+    self.dataSource = gifsArray;
     
-    self.container = [[UIScrollView alloc] initWithFrame:self.view.bounds];
-    [self.view addSubview:self.container];
+    [self setupCollectionView];
     
-    self.container.backgroundColor = [UIColor colorWithRed:174/255.0f green:216/255.0f blue:190/255.0f alpha:1.0f];
+    //NSInteger side = 300;
+    
+    //self.container = [[UIScrollView alloc] initWithFrame:self.view.bounds];
+    //[self.view addSubview:self.container];
+    
+    //self.container.backgroundColor = [UIColor colorWithRed:174/255.0f green:216/255.0f blue:190/255.0f alpha:1.0f];
 
-    FLAnimatedImage *image = [FLAnimatedImage animatedImageWithGIFData:[NSData dataWithContentsOfURL:[NSURL URLWithString:@"http://raphaelschaad.com/static/nyan.gif"]]];
-    self.displayImageView = [[FLAnimatedImageView alloc] init];
+    //FLAnimatedImage *image = [FLAnimatedImage animatedImageWithGIFData:[NSData dataWithContentsOfURL:[NSURL URLWithString:@"http://raphaelschaad.com/static/nyan.gif"]]];
     
+    //self.displayImageView = [[FLAnimatedImageView alloc] init];
+    //twice
+    //self.displayImageView.frame = CGRectMake(self.view.frame.size.width/2 - side/2, 100, side, side);
+    //self.imageFrame = self.displayImageView.frame;
+    //self.innerContainer = [[UIView alloc] initWithFrame:self.displayImageView.frame];
+    //[self.container addSubview:self.innerContainer];
+    
+    //self.displayImageView.animatedImage = image;
 
-    self.displayImageView.animatedImage = image;
-    self.displayImageView.frame = CGRectMake(self.view.frame.size.width/2 - side/2, 100, side, side);
-    
-    self.imageFrame = self.displayImageView.frame;
-    
-    self.innerContainer = [[UIView alloc] initWithFrame:self.displayImageView.frame];
-    [self.container addSubview:self.innerContainer];
+    //CGFloat ratio = [self ratioForImage:self.displayImageView.image];
+    //twice
+    //self.displayImageView.frame = CGRectMake(0, 0, side, side);
+    //[self.innerContainer addSubview:self.displayImageView];
+    //@"http://raphaelschaad.com/static/nyan.gif"
 
-    
-    CGFloat ratio = [self ratioForImage:self.displayImageView.image];
-    
-    //self.displayImageView.frame = CGRectMake(0, 0, self.displayImageView.image.size.width * ratio , self.displayImageView.image.size.height * ratio);
-    self.displayImageView.frame = CGRectMake(0, 0, side, side);
-    [self.innerContainer addSubview:self.displayImageView];
-
-//    [imageView.animatedImage imageLazilyCachedAtIndex:12];
-//    NSLog(@"frame count: %d", [imageView.animatedImage frameCount]);
-    self.ourImage = [UIImage animatedImageWithAnimatedGIFURL:[[NSURL alloc] initWithString:@"http://raphaelschaad.com/static/nyan.gif"]];
-    //NeonLights_iOS_750x1334.gif
-    //https://files.slack.com/files-pri/T02JM6XQR-F04SKBSSN/download/neonlights_ios_750x1334.gif
-    //http://raphaelschaad.com/static/nyan.gif
-//    self.containerImageView.image = ourImage;
+    self.ourImage = [UIImage animatedImageWithAnimatedGIFURL:[[NSURL alloc] initWithString:@"file:///Users/sarah/Desktop/nyan.gif"]];
 
     NSLog(@"images: %@", self.ourImage.images);
-
-    UILabel *myLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 70, self.view.bounds.size.width, 20)];
-    myLabel.text = @"HI SARAH!";
-    myLabel.textAlignment = NSTextAlignmentCenter;
-    myLabel.font = [UIFont boldSystemFontOfSize:20];
-    myLabel.textColor = [UIColor whiteColor];
-    //[self.container addSubview:myLabel];
     
-    self.textField1 = [[UITextField alloc] initWithFrame:CGRectMake(0, 16, self.innerContainer.frame.size.width, 50)];
-    self.textField2 = [[UITextField alloc] initWithFrame:CGRectMake(0, 221, self.innerContainer.frame.size.width, 50)];
-    UITextField *textField3 = [[UITextField alloc] initWithFrame:CGRectMake(0, 456, self.view.bounds.size.width, 50)];
-    self.textField1.text = @"HAPPY BIRTHDAY SARAH!";
-    self.textField2.text = @"FROM HEATHER";
-    textField3.text = @"TEXT3";
-    self.textField1.font = [UIFont boldSystemFontOfSize:18];
-    self.textField2.font = [UIFont boldSystemFontOfSize:18];
-    textField3.font = [UIFont boldSystemFontOfSize:18];
-    self.textField1.textColor = [UIColor whiteColor];
-    self.textField2.textColor = [UIColor whiteColor];
-    textField3.textColor = [UIColor redColor];
-    self.textField1.textAlignment = NSTextAlignmentCenter;
-    self.textField2.textAlignment = NSTextAlignmentCenter;
-    textField3.textAlignment = NSTextAlignmentCenter;
-    [self.innerContainer addSubview:self.textField1];
-    [self.innerContainer addSubview:self.textField2];
+    //self.textField1 = [[UITextField alloc] initWithFrame:CGRectMake(0, 16, self.innerContainer.frame.size.width, 50)];
+    //self.textField2 = [[UITextField alloc] initWithFrame:CGRectMake(0, 221, self.innerContainer.frame.size.width, 50)];
+    //UITextField *textField3 = [[UITextField alloc] initWithFrame:CGRectMake(0, 456, self.view.bounds.size.width, 50)];
+    //self.textField1.text = @"HAPPY BIRTHDAY SARAH!";
+    //self.textField2.text = @"FROM HEATHER";
+    //textField3.text = @"TEXT3";
+    //self.textField1.font = [UIFont boldSystemFontOfSize:18];
+    //self.textField2.font = [UIFont boldSystemFontOfSize:18];
+    //textField3.font = [UIFont boldSystemFontOfSize:18];
+    //self.textField1.textColor = [UIColor whiteColor];
+    //self.textField2.textColor = [UIColor whiteColor];
+    //textField3.textColor = [UIColor redColor];
+    //self.textField1.textAlignment = NSTextAlignmentCenter;
+    //self.textField2.textAlignment = NSTextAlignmentCenter;
+    //textField3.textAlignment = NSTextAlignmentCenter;
+    //[self.innerContainer addSubview:self.textField1];
+    //[self.innerContainer addSubview:self.textField2];
     //[self.container addSubview:textField3];
+    
+    
+    //UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+    //CGFloat buttonWidth = 125;
+    //CGFloat buttonX = (self.view.bounds.size.width/2) - (buttonWidth/2);
+    
+    //button.frame = CGRectMake(buttonX, self.displayImageView.image.size.height * ratio - 75, buttonWidth, 35);
+    //button.backgroundColor = [UIColor colorWithRed:65/255.0f green:102/255.0f blue:79/255.0f alpha:1.0f];
+    //button.layer.cornerRadius = 17;
+    //button.layer.masksToBounds = YES;
+    //[button setTitle:@"SEND" forState:UIControlStateNormal];
+    //button.titleLabel.font = [UIFont boldSystemFontOfSize:16];
+    //[button setTitleColor:[UIColor colorWithRed:223/255.0f green:239/255.0f blue:229/255.0f alpha:1.0f] forState:UIControlStateNormal];
+    
+    //UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideKeyBoard)];
+    //tapRecognizer.numberOfTouchesRequired = 1;
+    //tapRecognizer.numberOfTapsRequired = 1;
+    //[self.container addGestureRecognizer:tapRecognizer];
+    //[self.container addSubview:button];
+    //[button addTarget:self action:@selector(buttonAction) forControlEvents:UIControlEventTouchUpInside];
+
+    self.ourImages = [[NSMutableArray alloc] init];
+}
+
+#pragma mark - datasource
+-(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
+    return 1;
+}
+
+-(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+    return self.dataSource.count;
+}
+
+-(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
+    GifCollectionViewCell *cell = (GifCollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:CellIdentifier forIndexPath:indexPath];
+    
+    NSString *url = self.dataSource[indexPath.row];
+    
+    FLAnimatedImage *image = [FLAnimatedImage animatedImageWithGIFData:[NSData dataWithContentsOfURL:[NSURL URLWithString:url]]];
     
     
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
     CGFloat buttonWidth = 125;
     CGFloat buttonX = (self.view.bounds.size.width/2) - (buttonWidth/2);
     
-    button.frame = CGRectMake(buttonX, self.displayImageView.image.size.height * ratio - 75, buttonWidth, 35);
+    button.frame = CGRectMake(buttonX, 450, buttonWidth, 35);
     button.backgroundColor = [UIColor colorWithRed:65/255.0f green:102/255.0f blue:79/255.0f alpha:1.0f];
     button.layer.cornerRadius = 17;
     button.layer.masksToBounds = YES;
@@ -114,19 +151,41 @@
     UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideKeyBoard)];
     tapRecognizer.numberOfTouchesRequired = 1;
     tapRecognizer.numberOfTapsRequired = 1;
-    [self.container addGestureRecognizer:tapRecognizer];
-    
-
-    
-    [self.container addSubview:button];
+    [cell.container addGestureRecognizer:tapRecognizer];
+    [cell.container addSubview:button];
     [button addTarget:self action:@selector(buttonAction) forControlEvents:UIControlEventTouchUpInside];
+    
+    cell.displayImageView.animatedImage = image;
+    cell.displayImageView.layer.borderColor = [UIColor blackColor].CGColor;
+    cell.displayImageView.layer.borderWidth = 3.0;
+
+    
+    return cell;
+}
 
 
-//    [self displayCachedImagesForAnimatedImage:self.containerImageView.animatedImage];
-    self.ourImages = [[NSMutableArray alloc] init];
-
-  
-
+#pragma mark - helper
+- (void)setupCollectionView
+{
+    
+    UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc] init];
+    [flowLayout setScrollDirection:UICollectionViewScrollDirectionHorizontal];
+    [flowLayout setMinimumInteritemSpacing:0.0f];
+    [flowLayout setMinimumLineSpacing:0.0f];
+    [flowLayout setItemSize:CGSizeMake(self.view.frame.size.width, 548)];
+    
+    
+    self.collectionView = [[UICollectionView alloc]initWithFrame:self.view.bounds  collectionViewLayout:flowLayout];
+    [self.collectionView setPagingEnabled:YES];
+    [self.collectionView setCollectionViewLayout:flowLayout];
+    [self.collectionView registerClass:[GifCollectionViewCell class] forCellWithReuseIdentifier:CellIdentifier];
+    
+    self.collectionView.dataSource = self;
+    self.collectionView.delegate = self;
+    self.collectionView.backgroundColor = [UIColor colorWithRed:174/255.0f green:216/255.0f blue:190/255.0f alpha:1.0f];
+    
+    [self.view addSubview:self.collectionView];
+    
 }
 
 - (void)buttonAction
@@ -143,13 +202,11 @@
             [self.textField2 removeFromSuperview];
         }
         self.containerImageView = [UIImageView new];
-        self.containerImageView.frame = CGRectMake(0, 0, self.imageFrame.size.width, self.imageFrame.size.height);
+        self.containerImageView.frame = CGRectMake(0, 0, 300, 300);
         self.containerImageView.image = image;
         [self.innerContainer addSubview:self.containerImageView];
         [self.innerContainer addSubview:self.textField1];
         [self.innerContainer addSubview:self.textField2];
-        //[self.container addSubview:myLabel];
-        //        [self.container insertSubview:self.containerImageView atIndex:0];
         
         UIGraphicsBeginImageContext(CGSizeMake(side, side));
         CGContextRef context = UIGraphicsGetCurrentContext();
@@ -164,13 +221,20 @@
         i++;
     }
     
-    self.container.contentSize = CGSizeMake(self.view.frame.size.width, i * side);
+   //selfcell.container.contentSize = CGSizeMake(self.view.frame.size.width, i * side);
     
-    self.containerImageView.hidden = YES;
+    //self.containerImageView.hidden = YES;
     
-    makeAnimatedGif(self.ourImages, self.ourImages.count, self.ourImage.duration);
-    
-    [self popSMS];
+   // [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(void){
+       makeAnimatedGif(self.ourImages, self.ourImages.count, self.ourImage.duration);
+        dispatch_async(dispatch_get_main_queue(), ^(void){
+            //Run UI Updates
+            [MBProgressHUD hideHUDForView:self.view animated:YES];
+            
+            [self popSMS];
+        });
+    });
 }
 
 - (void)hideKeyBoard
