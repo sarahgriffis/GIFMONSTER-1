@@ -12,10 +12,13 @@
 		06E04AF31B0532FB001FC016 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 06E04AF21B0532FB001FC016 /* AppDelegate.m */; };
 		06E04AF61B0532FB001FC016 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06E04AF51B0532FB001FC016 /* ViewController.m */; };
 		06E04AF91B0532FB001FC016 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 06E04AF71B0532FB001FC016 /* Main.storyboard */; };
-		06E04AFB1B0532FB001FC016 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 06E04AFA1B0532FB001FC016 /* Images.xcassets */; };
 		06E04AFE1B0532FB001FC016 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 06E04AFC1B0532FB001FC016 /* LaunchScreen.xib */; };
 		06E04B0A1B0532FB001FC016 /* GIFMonsterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 06E04B091B0532FB001FC016 /* GIFMonsterTests.m */; };
 		06E04B141B0590B7001FC016 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06E04B131B0590B7001FC016 /* ImageIO.framework */; };
+		06F4E97A1B0688D000044AD6 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 06F4E9791B0688D000044AD6 /* Media.xcassets */; };
+		269A86291B0D517D00C78C17 /* GifCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 269A86281B0D517D00C78C17 /* GifCollectionViewCell.m */; };
+		26F8ADAC1B0674C9006852C7 /* monster.png in Resources */ = {isa = PBXBuildFile; fileRef = 26F8ADAB1B0674C9006852C7 /* monster.png */; };
+		26F8ADAE1B0675F7006852C7 /* monster2.png in Resources */ = {isa = PBXBuildFile; fileRef = 26F8ADAD1B0675F7006852C7 /* monster2.png */; };
 		4AF2506F0E5BE2C2AAC8FB53 /* libPods-GIFMonster.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F025671374C638A67C1B869 /* libPods-GIFMonster.a */; };
 		EC44BD6F44617A2BECFB1E45 /* UIImage+animatedGIF.m in Sources */ = {isa = PBXBuildFile; fileRef = EC44B13050408A81DBCF81CF /* UIImage+animatedGIF.m */; };
 /* End PBXBuildFile section */
@@ -41,13 +44,17 @@
 		06E04AF41B0532FB001FC016 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		06E04AF51B0532FB001FC016 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		06E04AF81B0532FB001FC016 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		06E04AFA1B0532FB001FC016 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		06E04AFD1B0532FB001FC016 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		06E04B031B0532FB001FC016 /* GIFMonsterTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GIFMonsterTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		06E04B081B0532FB001FC016 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		06E04B091B0532FB001FC016 /* GIFMonsterTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GIFMonsterTests.m; sourceTree = "<group>"; };
 		06E04B131B0590B7001FC016 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
+		06F4E9791B0688D000044AD6 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Media.xcassets; path = ../Media.xcassets; sourceTree = "<group>"; };
 		1F025671374C638A67C1B869 /* libPods-GIFMonster.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-GIFMonster.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		269A86281B0D517D00C78C17 /* GifCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GifCollectionViewCell.m; sourceTree = "<group>"; };
+		269A862A1B0D519900C78C17 /* GifCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GifCollectionViewCell.h; sourceTree = "<group>"; };
+		26F8ADAB1B0674C9006852C7 /* monster.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = monster.png; sourceTree = "<group>"; };
+		26F8ADAD1B0675F7006852C7 /* monster2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = monster2.png; sourceTree = "<group>"; };
 		A8793B3601A3DE0450399FC5 /* Pods-GIFMonster.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GIFMonster.release.xcconfig"; path = "Pods/Target Support Files/Pods-GIFMonster/Pods-GIFMonster.release.xcconfig"; sourceTree = "<group>"; };
 		EC44B13050408A81DBCF81CF /* UIImage+animatedGIF.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+animatedGIF.m"; sourceTree = "<group>"; };
 		EC44B99F91B20DF230FFF6D1 /* UIImage+animatedGIF.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+animatedGIF.h"; sourceTree = "<group>"; };
@@ -97,12 +104,16 @@
 		06E04AEC1B0532FB001FC016 /* GIFMonster */ = {
 			isa = PBXGroup;
 			children = (
+				06F4E9791B0688D000044AD6 /* Media.xcassets */,
+				26F8ADAD1B0675F7006852C7 /* monster2.png */,
+				26F8ADAB1B0674C9006852C7 /* monster.png */,
 				06E04AF11B0532FB001FC016 /* AppDelegate.h */,
 				06E04AF21B0532FB001FC016 /* AppDelegate.m */,
 				06E04AF41B0532FB001FC016 /* ViewController.h */,
 				06E04AF51B0532FB001FC016 /* ViewController.m */,
+				269A86281B0D517D00C78C17 /* GifCollectionViewCell.m */,
+				269A862A1B0D519900C78C17 /* GifCollectionViewCell.h */,
 				06E04AF71B0532FB001FC016 /* Main.storyboard */,
-				06E04AFA1B0532FB001FC016 /* Images.xcassets */,
 				06E04AFC1B0532FB001FC016 /* LaunchScreen.xib */,
 				06E04AED1B0532FB001FC016 /* Supporting Files */,
 				EC44B99F91B20DF230FFF6D1 /* UIImage+animatedGIF.h */,
@@ -238,9 +249,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				06F4E97A1B0688D000044AD6 /* Media.xcassets in Resources */,
 				06E04AF91B0532FB001FC016 /* Main.storyboard in Resources */,
+				26F8ADAE1B0675F7006852C7 /* monster2.png in Resources */,
 				06E04AFE1B0532FB001FC016 /* LaunchScreen.xib in Resources */,
-				06E04AFB1B0532FB001FC016 /* Images.xcassets in Resources */,
+				26F8ADAC1B0674C9006852C7 /* monster.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -292,6 +305,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				06E04AF61B0532FB001FC016 /* ViewController.m in Sources */,
+				269A86291B0D517D00C78C17 /* GifCollectionViewCell.m in Sources */,
 				06E04AF31B0532FB001FC016 /* AppDelegate.m in Sources */,
 				06E04AF01B0532FB001FC016 /* main.m in Sources */,
 				EC44BD6F44617A2BECFB1E45 /* UIImage+animatedGIF.m in Sources */,
