@@ -11,16 +11,25 @@
 		06E04AF01B0532FB001FC016 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 06E04AEF1B0532FB001FC016 /* main.m */; };
 		06E04AF31B0532FB001FC016 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 06E04AF21B0532FB001FC016 /* AppDelegate.m */; };
 		06E04AF61B0532FB001FC016 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06E04AF51B0532FB001FC016 /* ViewController.m */; };
-		06E04AF91B0532FB001FC016 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 06E04AF71B0532FB001FC016 /* Main.storyboard */; };
-		06E04AFE1B0532FB001FC016 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 06E04AFC1B0532FB001FC016 /* LaunchScreen.xib */; };
 		06E04B0A1B0532FB001FC016 /* GIFMonsterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 06E04B091B0532FB001FC016 /* GIFMonsterTests.m */; };
 		06E04B141B0590B7001FC016 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06E04B131B0590B7001FC016 /* ImageIO.framework */; };
-		06F4E97A1B0688D000044AD6 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 06F4E9791B0688D000044AD6 /* Media.xcassets */; };
-		269A86291B0D517D00C78C17 /* GifCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 269A86281B0D517D00C78C17 /* GifCollectionViewCell.m */; };
-		26F8ADAC1B0674C9006852C7 /* monster.png in Resources */ = {isa = PBXBuildFile; fileRef = 26F8ADAB1B0674C9006852C7 /* monster.png */; };
-		26F8ADAE1B0675F7006852C7 /* monster2.png in Resources */ = {isa = PBXBuildFile; fileRef = 26F8ADAD1B0675F7006852C7 /* monster2.png */; };
 		4AF2506F0E5BE2C2AAC8FB53 /* libPods-GIFMonster.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F025671374C638A67C1B869 /* libPods-GIFMonster.a */; };
-		EC44BD6F44617A2BECFB1E45 /* UIImage+animatedGIF.m in Sources */ = {isa = PBXBuildFile; fileRef = EC44B13050408A81DBCF81CF /* UIImage+animatedGIF.m */; };
+		EC44B161C447252A4709C0D4 /* GMSMSUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = EC44BF5C87380C86CCBB488E /* GMSMSUtil.m */; };
+		EC44B3004E8E94C7E292FC0B /* GMGIFGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = EC44BF7E07C6F7D21D382853 /* GMGIFGenerator.m */; };
+		EC44B300AC2DB3A273FBAE9E /* UIColor+GIFMonsterColors.m in Sources */ = {isa = PBXBuildFile; fileRef = EC44BD9D0F36B42487054287 /* UIColor+GIFMonsterColors.m */; };
+		EC44B33FC5E8FF7141B0C213 /* monster2.png in Resources */ = {isa = PBXBuildFile; fileRef = EC44BE1B9826F5A38763E695 /* monster2.png */; };
+		EC44B3BCB5577B2B21D3EEBB /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EC44BDF7614719EAABCDE6C9 /* Media.xcassets */; };
+		EC44B524C172D36C9F08D487 /* UIImage+animatedGIF.m in Sources */ = {isa = PBXBuildFile; fileRef = EC44BAEF5E5A4EB232C141F7 /* UIImage+animatedGIF.m */; };
+		EC44B6D59D021FB4686B7001 /* UIImage+Ratio.m in Sources */ = {isa = PBXBuildFile; fileRef = EC44BB2624CCA4AAE87E8256 /* UIImage+Ratio.m */; };
+		EC44B6EC165E6F9A2213597D /* NARootTouchThroughView.m in Sources */ = {isa = PBXBuildFile; fileRef = EC44B8C5E26DDF96B26D0D7E /* NARootTouchThroughView.m */; };
+		EC44B74E9F473AE3C6665B0A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EC44B114BC1A1A10364F2071 /* Main.storyboard */; };
+		EC44B8A87484D012A76E851C /* NATouchThroughView.m in Sources */ = {isa = PBXBuildFile; fileRef = EC44BD25B9D39FF7E5499727 /* NATouchThroughView.m */; };
+		EC44B988F1BC73DA1FE1D914 /* monster.png in Resources */ = {isa = PBXBuildFile; fileRef = EC44B804835EE3B8CE0B75EC /* monster.png */; };
+		EC44B9A9EE4847918E8BF7ED /* GMMemeTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = EC44BCD51E705AC1470CB55B /* GMMemeTextView.m */; };
+		EC44BCD0D86925EF02B5A312 /* GMGIFGenerationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = EC44B148C0872C6E951A22A3 /* GMGIFGenerationManager.m */; };
+		EC44BCD494A0FC0A0C5A5A2B /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC44BE89F20F235B3B69E78D /* LaunchScreen.xib */; };
+		EC44BE5B0A05E657A58061A8 /* GMGIFCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC44B30549020E2417E6E696 /* GMGIFCollectionViewCell.m */; };
+		EC44BF35E948F9E3ED7D00DE /* GMSnapshotGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = EC44B8AEB10C24502599D06C /* GMSnapshotGenerator.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,21 +52,39 @@
 		06E04AF21B0532FB001FC016 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		06E04AF41B0532FB001FC016 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		06E04AF51B0532FB001FC016 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		06E04AF81B0532FB001FC016 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		06E04AFD1B0532FB001FC016 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		06E04B031B0532FB001FC016 /* GIFMonsterTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GIFMonsterTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		06E04B081B0532FB001FC016 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		06E04B091B0532FB001FC016 /* GIFMonsterTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GIFMonsterTests.m; sourceTree = "<group>"; };
 		06E04B131B0590B7001FC016 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
-		06F4E9791B0688D000044AD6 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Media.xcassets; path = ../Media.xcassets; sourceTree = "<group>"; };
 		1F025671374C638A67C1B869 /* libPods-GIFMonster.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-GIFMonster.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		269A86281B0D517D00C78C17 /* GifCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GifCollectionViewCell.m; sourceTree = "<group>"; };
-		269A862A1B0D519900C78C17 /* GifCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GifCollectionViewCell.h; sourceTree = "<group>"; };
-		26F8ADAB1B0674C9006852C7 /* monster.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = monster.png; sourceTree = "<group>"; };
-		26F8ADAD1B0675F7006852C7 /* monster2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = monster2.png; sourceTree = "<group>"; };
 		A8793B3601A3DE0450399FC5 /* Pods-GIFMonster.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GIFMonster.release.xcconfig"; path = "Pods/Target Support Files/Pods-GIFMonster/Pods-GIFMonster.release.xcconfig"; sourceTree = "<group>"; };
-		EC44B13050408A81DBCF81CF /* UIImage+animatedGIF.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+animatedGIF.m"; sourceTree = "<group>"; };
-		EC44B99F91B20DF230FFF6D1 /* UIImage+animatedGIF.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+animatedGIF.h"; sourceTree = "<group>"; };
+		EC44B0A131843C5A7F4095B8 /* NARootTouchThroughView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NARootTouchThroughView.h; sourceTree = "<group>"; };
+		EC44B148C0872C6E951A22A3 /* GMGIFGenerationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GMGIFGenerationManager.m; sourceTree = "<group>"; };
+		EC44B238DC4727F736696C0E /* GMGIFCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GMGIFCollectionViewCell.h; sourceTree = "<group>"; };
+		EC44B2B0E4172A8EED5D5EB1 /* UIImage+animatedGIF.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+animatedGIF.h"; sourceTree = "<group>"; };
+		EC44B30549020E2417E6E696 /* GMGIFCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GMGIFCollectionViewCell.m; sourceTree = "<group>"; };
+		EC44B74ACE0A70AEE7F45F95 /* GMMemeTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GMMemeTextView.h; sourceTree = "<group>"; };
+		EC44B7688223621A69AF1E43 /* NATouchThroughView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NATouchThroughView.h; sourceTree = "<group>"; };
+		EC44B77CCD2E574A5BCE1C0B /* GMSMSUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GMSMSUtil.h; sourceTree = "<group>"; };
+		EC44B79C85CE6BA36CFAEDE2 /* UIColor+GIFMonsterColors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+GIFMonsterColors.h"; sourceTree = "<group>"; };
+		EC44B804835EE3B8CE0B75EC /* monster.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = monster.png; sourceTree = "<group>"; };
+		EC44B8AEB10C24502599D06C /* GMSnapshotGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GMSnapshotGenerator.m; sourceTree = "<group>"; };
+		EC44B8C5E26DDF96B26D0D7E /* NARootTouchThroughView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NARootTouchThroughView.m; sourceTree = "<group>"; };
+		EC44B90C384EE9019D1EE694 /* GMSnapshotGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GMSnapshotGenerator.h; sourceTree = "<group>"; };
+		EC44BAEF5E5A4EB232C141F7 /* UIImage+animatedGIF.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+animatedGIF.m"; sourceTree = "<group>"; };
+		EC44BB214EE3C2DB12A42D66 /* GMGIFGenerationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GMGIFGenerationManager.h; sourceTree = "<group>"; };
+		EC44BB2624CCA4AAE87E8256 /* UIImage+Ratio.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Ratio.m"; sourceTree = "<group>"; };
+		EC44BC2CF38164AD9FAA5AAE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		EC44BCAF8466103926AB259D /* GMGIFGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GMGIFGenerator.h; sourceTree = "<group>"; };
+		EC44BCD51E705AC1470CB55B /* GMMemeTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GMMemeTextView.m; sourceTree = "<group>"; };
+		EC44BCED7418C52665D97BFB /* UIImage+Ratio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Ratio.h"; sourceTree = "<group>"; };
+		EC44BD25B9D39FF7E5499727 /* NATouchThroughView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NATouchThroughView.m; sourceTree = "<group>"; };
+		EC44BD7A8C4538B7D2A0F56D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		EC44BD9D0F36B42487054287 /* UIColor+GIFMonsterColors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+GIFMonsterColors.m"; sourceTree = "<group>"; };
+		EC44BDF7614719EAABCDE6C9 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = SOURCE_ROOT; };
+		EC44BE1B9826F5A38763E695 /* monster2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = monster2.png; sourceTree = "<group>"; };
+		EC44BF5C87380C86CCBB488E /* GMSMSUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GMSMSUtil.m; sourceTree = "<group>"; };
+		EC44BF7E07C6F7D21D382853 /* GMGIFGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GMGIFGenerator.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,20 +131,15 @@
 		06E04AEC1B0532FB001FC016 /* GIFMonster */ = {
 			isa = PBXGroup;
 			children = (
-				06F4E9791B0688D000044AD6 /* Media.xcassets */,
-				26F8ADAD1B0675F7006852C7 /* monster2.png */,
-				26F8ADAB1B0674C9006852C7 /* monster.png */,
 				06E04AF11B0532FB001FC016 /* AppDelegate.h */,
 				06E04AF21B0532FB001FC016 /* AppDelegate.m */,
 				06E04AF41B0532FB001FC016 /* ViewController.h */,
 				06E04AF51B0532FB001FC016 /* ViewController.m */,
-				269A86281B0D517D00C78C17 /* GifCollectionViewCell.m */,
-				269A862A1B0D519900C78C17 /* GifCollectionViewCell.h */,
-				06E04AF71B0532FB001FC016 /* Main.storyboard */,
-				06E04AFC1B0532FB001FC016 /* LaunchScreen.xib */,
 				06E04AED1B0532FB001FC016 /* Supporting Files */,
-				EC44B99F91B20DF230FFF6D1 /* UIImage+animatedGIF.h */,
-				EC44B13050408A81DBCF81CF /* UIImage+animatedGIF.m */,
+				EC44B9DABBA7CC50DE8DF8BB /* Images */,
+				EC44B9999F3076B99DC07741 /* Util */,
+				EC44B834C2EDDE433193FA19 /* GIFGeneration */,
+				EC44BBA1305E7F70ABDFD41A /* View */,
 			);
 			path = GIFMonster;
 			sourceTree = "<group>";
@@ -127,6 +149,9 @@
 			children = (
 				06E04AEE1B0532FB001FC016 /* Info.plist */,
 				06E04AEF1B0532FB001FC016 /* main.m */,
+				EC44BE89F20F235B3B69E78D /* LaunchScreen.xib */,
+				EC44B114BC1A1A10364F2071 /* Main.storyboard */,
+				EC44BDF7614719EAABCDE6C9 /* Media.xcassets */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -165,6 +190,58 @@
 				A8793B3601A3DE0450399FC5 /* Pods-GIFMonster.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		EC44B834C2EDDE433193FA19 /* GIFGeneration */ = {
+			isa = PBXGroup;
+			children = (
+				EC44B148C0872C6E951A22A3 /* GMGIFGenerationManager.m */,
+				EC44BF7E07C6F7D21D382853 /* GMGIFGenerator.m */,
+				EC44BB214EE3C2DB12A42D66 /* GMGIFGenerationManager.h */,
+				EC44B90C384EE9019D1EE694 /* GMSnapshotGenerator.h */,
+				EC44B8AEB10C24502599D06C /* GMSnapshotGenerator.m */,
+				EC44BCAF8466103926AB259D /* GMGIFGenerator.h */,
+			);
+			path = GIFGeneration;
+			sourceTree = "<group>";
+		};
+		EC44B9999F3076B99DC07741 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				EC44B2B0E4172A8EED5D5EB1 /* UIImage+animatedGIF.h */,
+				EC44BAEF5E5A4EB232C141F7 /* UIImage+animatedGIF.m */,
+				EC44BB2624CCA4AAE87E8256 /* UIImage+Ratio.m */,
+				EC44BCED7418C52665D97BFB /* UIImage+Ratio.h */,
+				EC44BD9D0F36B42487054287 /* UIColor+GIFMonsterColors.m */,
+				EC44B79C85CE6BA36CFAEDE2 /* UIColor+GIFMonsterColors.h */,
+				EC44B0A131843C5A7F4095B8 /* NARootTouchThroughView.h */,
+				EC44B8C5E26DDF96B26D0D7E /* NARootTouchThroughView.m */,
+				EC44B7688223621A69AF1E43 /* NATouchThroughView.h */,
+				EC44BD25B9D39FF7E5499727 /* NATouchThroughView.m */,
+				EC44BF5C87380C86CCBB488E /* GMSMSUtil.m */,
+				EC44B77CCD2E574A5BCE1C0B /* GMSMSUtil.h */,
+			);
+			path = Util;
+			sourceTree = "<group>";
+		};
+		EC44B9DABBA7CC50DE8DF8BB /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				EC44B804835EE3B8CE0B75EC /* monster.png */,
+				EC44BE1B9826F5A38763E695 /* monster2.png */,
+			);
+			path = Images;
+			sourceTree = "<group>";
+		};
+		EC44BBA1305E7F70ABDFD41A /* View */ = {
+			isa = PBXGroup;
+			children = (
+				EC44BCD51E705AC1470CB55B /* GMMemeTextView.m */,
+				EC44B74ACE0A70AEE7F45F95 /* GMMemeTextView.h */,
+				EC44B30549020E2417E6E696 /* GMGIFCollectionViewCell.m */,
+				EC44B238DC4727F736696C0E /* GMGIFCollectionViewCell.h */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -249,11 +326,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				06F4E97A1B0688D000044AD6 /* Media.xcassets in Resources */,
-				06E04AF91B0532FB001FC016 /* Main.storyboard in Resources */,
-				26F8ADAE1B0675F7006852C7 /* monster2.png in Resources */,
-				06E04AFE1B0532FB001FC016 /* LaunchScreen.xib in Resources */,
-				26F8ADAC1B0674C9006852C7 /* monster.png in Resources */,
+				EC44B988F1BC73DA1FE1D914 /* monster.png in Resources */,
+				EC44B33FC5E8FF7141B0C213 /* monster2.png in Resources */,
+				EC44BCD494A0FC0A0C5A5A2B /* LaunchScreen.xib in Resources */,
+				EC44B74E9F473AE3C6665B0A /* Main.storyboard in Resources */,
+				EC44B3BCB5577B2B21D3EEBB /* Media.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -305,10 +382,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				06E04AF61B0532FB001FC016 /* ViewController.m in Sources */,
-				269A86291B0D517D00C78C17 /* GifCollectionViewCell.m in Sources */,
 				06E04AF31B0532FB001FC016 /* AppDelegate.m in Sources */,
 				06E04AF01B0532FB001FC016 /* main.m in Sources */,
-				EC44BD6F44617A2BECFB1E45 /* UIImage+animatedGIF.m in Sources */,
+				EC44B524C172D36C9F08D487 /* UIImage+animatedGIF.m in Sources */,
+				EC44BCD0D86925EF02B5A312 /* GMGIFGenerationManager.m in Sources */,
+				EC44B3004E8E94C7E292FC0B /* GMGIFGenerator.m in Sources */,
+				EC44BF35E948F9E3ED7D00DE /* GMSnapshotGenerator.m in Sources */,
+				EC44B6D59D021FB4686B7001 /* UIImage+Ratio.m in Sources */,
+				EC44B300AC2DB3A273FBAE9E /* UIColor+GIFMonsterColors.m in Sources */,
+				EC44B9A9EE4847918E8BF7ED /* GMMemeTextView.m in Sources */,
+				EC44BE5B0A05E657A58061A8 /* GMGIFCollectionViewCell.m in Sources */,
+				EC44B6EC165E6F9A2213597D /* NARootTouchThroughView.m in Sources */,
+				EC44B8A87484D012A76E851C /* NATouchThroughView.m in Sources */,
+				EC44B161C447252A4709C0D4 /* GMSMSUtil.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -331,18 +417,18 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		06E04AF71B0532FB001FC016 /* Main.storyboard */ = {
+		EC44B114BC1A1A10364F2071 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				06E04AF81B0532FB001FC016 /* Base */,
+				EC44BD7A8C4538B7D2A0F56D /* Base */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
-		06E04AFC1B0532FB001FC016 /* LaunchScreen.xib */ = {
+		EC44BE89F20F235B3B69E78D /* LaunchScreen.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
-				06E04AFD1B0532FB001FC016 /* Base */,
+				EC44BC2CF38164AD9FAA5AAE /* Base */,
 			);
 			name = LaunchScreen.xib;
 			sourceTree = "<group>";
