@@ -9,5 +9,7 @@
 @interface UIColor (GIFMonsterColors)
 
 + (instancetype)gifMonsterGreen;
++ (instancetype)gifsendbuttonbackgroundGreen;
++ (instancetype)gifSendButtonTextGreen;
 
 @end

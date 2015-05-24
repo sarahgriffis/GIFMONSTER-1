@@ -17,12 +17,14 @@
 
 static NSString *CellIdentifier = @"CellIdentifier";
 
-@interface ViewController () <UICollectionViewDataSource>
+@interface ViewController () <UICollectionViewDataSource, UICollectionViewDelegate>
 
 @property (nonatomic, strong) NSArray *dataSource;
 @property (nonatomic, strong) UICollectionView *collectionView;
 @property (nonatomic, strong) GMMemeTextView *topView;
 @property (nonatomic, strong) GMSMSUtil *smsUtil;
+@property (nonatomic, strong) UIButton *sendButton;
+@property (nonatomic, strong) NSIndexPath *selectedCellIndexPath;
 
 @end
 
@@ -33,6 +35,7 @@ static NSString *CellIdentifier = @"CellIdentifier";
     [super viewDidLoad];
 
     self.view.backgroundColor = [UIColor gifMonsterGreen];
+    self.selectedCellIndexPath = [NSIndexPath indexPathForRow:0 inSection:0];
 
     self.dataSource = @[
             @"http://raphaelschaad.com/static/nyan.gif",
@@ -41,19 +44,18 @@ static NSString *CellIdentifier = @"CellIdentifier";
     ];
     
     [self setupCollectionView];
-
-    //TODO: Move to view did layout subviews
-    self.topView = [[GMMemeTextView alloc] initWithFrame:CGRectMake(0, 0, 300, 300) topText:@"LMOAZ" bottomText:@"OMFG"];
-    self.topView.center = self.view.center;
-    [self.view addSubview:self.topView];
-
-    //TODO: Add button
+    [self setupTopView];
+    [self setupSendButton];
 }
 
 - (void)viewDidLayoutSubviews
 {
     [super viewDidLayoutSubviews];
-
+    self.topView.frame = CGRectMake(0, 0, 300, 300);
+    self.topView.center = self.view.center;
+    CGFloat buttonWidth = 125;
+    CGFloat buttonX = (self.view.bounds.size.width / 2) - (buttonWidth / 2);
+    self.sendButton.frame = CGRectMake(buttonX, self.topView.frame.size.height + self.topView.frame.origin.y + 20, buttonWidth, 35);
 }
 
 #pragma mark - UICollectionViewDataSource
@@ -69,6 +71,13 @@ static NSString *CellIdentifier = @"CellIdentifier";
     UIImage *image = [UIImage animatedImageWithAnimatedGIFURL:[NSURL URLWithString:url]];
     cell.animatedImage = image;
     return cell;
+}
+
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
+{
+    for (UICollectionViewCell *cell in [self.collectionView visibleCells]) {
+        self.selectedCellIndexPath = [self.collectionView indexPathForCell:cell];
+    }
 }
 
 #pragma mark - Helper
@@ -87,7 +96,27 @@ static NSString *CellIdentifier = @"CellIdentifier";
     self.collectionView.backgroundColor = [UIColor clearColor];
     
     self.collectionView.dataSource = self;
+    self.collectionView.delegate = self;
     [self.view addSubview:self.collectionView];
+}
+
+- (void)setupTopView
+{
+    self.topView = [[GMMemeTextView alloc] initWithFrame:CGRectZero topText:@"LMOAZ" bottomText:@"OMFG"];
+    [self.view addSubview:self.topView];
+}
+
+- (void)setupSendButton
+{
+    self.sendButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    self.sendButton.backgroundColor = [UIColor gifsendbuttonbackgroundGreen];
+    self.sendButton.layer.cornerRadius = 17;
+    self.sendButton.layer.masksToBounds = YES;
+    [self.sendButton setTitle:@"SEND" forState:UIControlStateNormal];
+    self.sendButton.titleLabel.font = [UIFont boldSystemFontOfSize:16];
+    [self.sendButton setTitleColor:[UIColor gifSendButtonTextGreen] forState:UIControlStateNormal];
+    [self.sendButton addTarget:self action:@selector(buttonAction:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:self.sendButton];
 }
 
 #pragma mark - Lazy
@@ -100,10 +129,10 @@ static NSString *CellIdentifier = @"CellIdentifier";
 }
 
 #pragma mark - Button Action
-- (void)buttonAction
+- (void)buttonAction:(id)sender
 {
-    //TODO: Get image from the currently selected cell
-    UIImage *selectedBackgroundImage = [UIImage new];
+    GMGIFCollectionViewCell *cell = (GMGIFCollectionViewCell *)[self.collectionView cellForItemAtIndexPath:self.selectedCellIndexPath];
+    UIImage *selectedBackgroundImage = cell.animatedImage;
     __weak typeof(self) weakSelf = self;
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     [GMGIFGenerationManager generateGIFForAnimatedBackgroundImage:selectedBackgroundImage topView:self.topView completion:^(NSURL *fileURL) {
