@@ -10,10 +10,10 @@
 #import "MBProgressHUD.h"
 #import "GMGIFCollectionViewCell.h"
 #import "GMGIFGenerationManager.h"
-#import "UIImage+animatedGIF.h"
 #import "UIColor+GIFMonsterColors.h"
 #import "GMMemeTextView.h"
 #import "GMSMSUtil.h"
+#import <SDWebImage/UIImageView+WebCache.h>
 
 static NSString *CellIdentifier = @"CellIdentifier";
 
@@ -39,8 +39,9 @@ static NSString *CellIdentifier = @"CellIdentifier";
 
     self.dataSource = @[
             @"http://raphaelschaad.com/static/nyan.gif",
-            @"http://raphaelschaad.com/static/nyan.gif",
-            @"http://raphaelschaad.com/static/nyan.gif"
+            @"http://media.giphy.com/media/fA5fRLP2rMtP2/giphy.gif",
+            @"http://media.giphy.com/media/5HSYaZTcRpYnS/giphy.gif",
+            @"http://media.giphy.com/media/11SiBP2RFeBCHC/giphy.gif"
     ];
     
     [self setupCollectionView];
@@ -51,6 +52,7 @@ static NSString *CellIdentifier = @"CellIdentifier";
 - (void)viewDidLayoutSubviews
 {
     [super viewDidLayoutSubviews];
+    //TODO: put this size in a global space
     self.topView.frame = CGRectMake(0, 0, 300, 300);
     self.topView.center = self.view.center;
     CGFloat buttonWidth = 125;
@@ -68,8 +70,9 @@ static NSString *CellIdentifier = @"CellIdentifier";
 {
     GMGIFCollectionViewCell *cell = (GMGIFCollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:CellIdentifier forIndexPath:indexPath];
     NSString *url = self.dataSource[indexPath.row];
-    UIImage *image = [UIImage animatedImageWithAnimatedGIFURL:[NSURL URLWithString:url]];
-    cell.animatedImage = image;
+    [cell.animatedImageView sd_setImageWithURL:[NSURL URLWithString:url] placeholderImage:nil options:0 completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+
+    }];
     return cell;
 }
 
@@ -94,7 +97,12 @@ static NSString *CellIdentifier = @"CellIdentifier";
     [self.collectionView setCollectionViewLayout:flowLayout];
     [self.collectionView registerClass:[GMGIFCollectionViewCell class] forCellWithReuseIdentifier:CellIdentifier];
     self.collectionView.backgroundColor = [UIColor clearColor];
-    
+
+    UITapGestureRecognizer *recognizer = [UITapGestureRecognizer new];
+    recognizer.numberOfTapsRequired = 1;
+    [recognizer addTarget:self action:@selector(hideKeyboard)];
+    [self.collectionView addGestureRecognizer:recognizer];
+
     self.collectionView.dataSource = self;
     self.collectionView.delegate = self;
     [self.view addSubview:self.collectionView];
@@ -132,21 +140,21 @@ static NSString *CellIdentifier = @"CellIdentifier";
 - (void)buttonAction:(id)sender
 {
     GMGIFCollectionViewCell *cell = (GMGIFCollectionViewCell *)[self.collectionView cellForItemAtIndexPath:self.selectedCellIndexPath];
-    UIImage *selectedBackgroundImage = cell.animatedImage;
     __weak typeof(self) weakSelf = self;
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    [GMGIFGenerationManager generateGIFForAnimatedBackgroundImage:selectedBackgroundImage topView:self.topView completion:^(NSURL *fileURL) {
+    [GMGIFGenerationManager generateGIFForAnimatedBackgroundImage:cell.animatedImage topView:[self.topView copy] completion:^(NSURL *fileURL) {
         [MBProgressHUD hideHUDForView:weakSelf.view animated:YES];
         [weakSelf.smsUtil popSMSForFileAtURL:fileURL];
     } error:^(NSError **error) {
         //do error stuffs
         [MBProgressHUD hideHUDForView:weakSelf.view animated:YES];
+        //TODO: Add error alert view.
     }];
 }
 
-- (void)hideKeyBoard
+-(void)hideKeyboard
 {
-    //TODO: forward this to the top view
+    [self.topView hideKeyboard];
 }
 
 @end

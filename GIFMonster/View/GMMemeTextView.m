@@ -71,4 +71,17 @@
     return _touchThroughView;
 }
 
+#pragma mark - NSCopying
+- (id)copyWithZone:(NSZone *)zone
+{
+    return [[GMMemeTextView alloc] initWithFrame:self.bounds topText:self.topTextField.text bottomText:self.bottomTextField.text];
+}
+
+#pragma mark - Keyboard
+- (void)hideKeyboard
+{
+    [self.topTextField resignFirstResponder];
+    [self.bottomTextField resignFirstResponder];
+}
+
 @end

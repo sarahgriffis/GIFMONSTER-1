@@ -13,7 +13,7 @@ Creates an array of snapshot UIImages from an animated background image and then
  */
 + (NSArray *)snapshotImagesForImagesInAnimatedBackgroundImage:(UIImage *)image topView:(UIView *)topView
 {
-    //these need to be 300/300
+    //TODO: Put this 300/300 size in a global place
     CGFloat imageWidth = 300;
     CGFloat imageHeight = 300;
     NSMutableArray *snapshots = [NSMutableArray array];

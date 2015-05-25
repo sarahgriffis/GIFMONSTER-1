@@ -8,10 +8,11 @@
 
 
 #import "GMGIFCollectionViewCell.h"
+#import "UIColor+GIFMonsterColors.h"
 
 @interface GMGIFCollectionViewCell()
 
-@property (nonatomic, strong) UIImageView *animatedImageView;
+@property (nonatomic, strong, readwrite) UIImageView *animatedImageView;
 
 @end
 
@@ -31,6 +32,7 @@
 {
     if (!_animatedImageView) {
         _animatedImageView = [UIImageView new];
+        _animatedImageView.backgroundColor = [UIColor gifsendbuttonbackgroundGreen];
         [self.contentView addSubview:_animatedImageView];
     }
     return _animatedImageView;

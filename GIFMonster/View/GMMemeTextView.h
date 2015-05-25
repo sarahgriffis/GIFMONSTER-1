@@ -8,8 +8,11 @@
 #import "NARootTouchThroughView.h"
 #import "NATouchThroughView.h"
 
-@interface GMMemeTextView : NARootTouchThroughView
+@interface GMMemeTextView : NARootTouchThroughView <NSCopying>
 
 - (instancetype)initWithFrame:(CGRect)frame topText:(NSString *)topText bottomText:(NSString *)bottomText;
+
+//TODO: Refactor this so it's not so tightly coupled.  Maybe the hideKeyboard method is a method from a top view protocol.
+- (void)hideKeyboard;
 
 @end
