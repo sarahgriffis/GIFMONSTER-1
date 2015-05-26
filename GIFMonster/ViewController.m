@@ -144,7 +144,7 @@ static NSString *CellIdentifier = @"CellIdentifier";
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     [GMGIFGenerationManager generateGIFForAnimatedBackgroundImage:cell.animatedImage topView:[self.topView copy] completion:^(NSURL *fileURL) {
         [MBProgressHUD hideHUDForView:weakSelf.view animated:YES];
-        [weakSelf.smsUtil popSMSForFileAtURL:fileURL];
+        [weakSelf.smsUtil presentMessageControllerForFileAtURL:fileURL];
     } error:^(NSError **error) {
         //do error stuffs
         [MBProgressHUD hideHUDForView:weakSelf.view animated:YES];
@@ -152,6 +152,7 @@ static NSString *CellIdentifier = @"CellIdentifier";
     }];
 }
 
+#pragma mark - Keyboard
 -(void)hideKeyboard
 {
     [self.topView hideKeyboard];

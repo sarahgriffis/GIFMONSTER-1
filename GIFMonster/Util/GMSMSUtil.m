@@ -22,7 +22,7 @@
     return self;
 }
 
-- (void)popSMSForFileAtURL:(NSURL *)fileURL
+- (void)presentMessageControllerForFileAtURL:(NSURL *)fileURL
 {
     MFMessageComposeViewController *messageController = [[MFMessageComposeViewController alloc] init];
     messageController.messageComposeDelegate = self;

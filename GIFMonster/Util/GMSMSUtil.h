@@ -11,6 +11,6 @@
 @interface GMSMSUtil : NSObject
 
 - (instancetype)initWithViewController:(UIViewController *)viewController;
-- (void)popSMSForFileAtURL:(NSURL *)fileURL;
+- (void)presentMessageControllerForFileAtURL:(NSURL *)fileURL;
 
 @end
