@@ -5,7 +5,7 @@
 
 #import "GMMemeTextView.h"
 
-@interface GMMemeTextView()
+@interface GMMemeTextView() <UITextFieldDelegate>
 
 @property (nonatomic, strong) UITextField *topTextField;
 @property (nonatomic, strong) UITextField *bottomTextField;
@@ -56,6 +56,7 @@
         _bottomTextField = [UITextField new];
         _bottomTextField.textAlignment = NSTextAlignmentCenter;
         _bottomTextField.font = [UIFont boldSystemFontOfSize:18];
+        _bottomTextField.delegate = self;
         _bottomTextField.textColor = [UIColor whiteColor];
         [self addSubview:_bottomTextField];
     }
@@ -82,6 +83,13 @@
 {
     [self.topTextField resignFirstResponder];
     [self.bottomTextField resignFirstResponder];
+}
+
+//http://stackoverflow.com/questions/433337/set-the-maximum-character-length-of-a-uitextfield
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
+{
+//    return textField.text.length < 9;
+    return [textField.text length] + string.length - range.length < 9;
 }
 
 @end

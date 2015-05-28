@@ -11,11 +11,6 @@
 
 @interface GMGIFCollectionViewCell : UICollectionViewCell
 
-/*
-Reference to the animated background image for the cell.
- */
-@property (nonatomic, strong) UIImage *animatedImage;
-
 @property (nonatomic, strong, readonly) UIImageView *animatedImageView;
 
 @end

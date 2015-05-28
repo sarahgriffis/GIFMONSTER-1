@@ -20,6 +20,7 @@
 		EC44B33FC5E8FF7141B0C213 /* monster2.png in Resources */ = {isa = PBXBuildFile; fileRef = EC44BE1B9826F5A38763E695 /* monster2.png */; };
 		EC44B3BCB5577B2B21D3EEBB /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EC44BDF7614719EAABCDE6C9 /* Media.xcassets */; };
 		EC44B524C172D36C9F08D487 /* UIImage+animatedGIF.m in Sources */ = {isa = PBXBuildFile; fileRef = EC44BAEF5E5A4EB232C141F7 /* UIImage+animatedGIF.m */; };
+		EC44B65D19BEA9AEF3564DDB /* GMConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = EC44B42EC10B92CE1F107541 /* GMConstants.m */; };
 		EC44B6D59D021FB4686B7001 /* UIImage+Ratio.m in Sources */ = {isa = PBXBuildFile; fileRef = EC44BB2624CCA4AAE87E8256 /* UIImage+Ratio.m */; };
 		EC44B6EC165E6F9A2213597D /* NARootTouchThroughView.m in Sources */ = {isa = PBXBuildFile; fileRef = EC44B8C5E26DDF96B26D0D7E /* NARootTouchThroughView.m */; };
 		EC44B74E9F473AE3C6665B0A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EC44B114BC1A1A10364F2071 /* Main.storyboard */; };
@@ -62,7 +63,9 @@
 		EC44B148C0872C6E951A22A3 /* GMGIFGenerationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GMGIFGenerationManager.m; sourceTree = "<group>"; };
 		EC44B238DC4727F736696C0E /* GMGIFCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GMGIFCollectionViewCell.h; sourceTree = "<group>"; };
 		EC44B2B0E4172A8EED5D5EB1 /* UIImage+animatedGIF.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+animatedGIF.h"; sourceTree = "<group>"; };
+		EC44B2FA7B5634CEF0DB6464 /* GMConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GMConstants.h; sourceTree = "<group>"; };
 		EC44B30549020E2417E6E696 /* GMGIFCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GMGIFCollectionViewCell.m; sourceTree = "<group>"; };
+		EC44B42EC10B92CE1F107541 /* GMConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GMConstants.m; sourceTree = "<group>"; };
 		EC44B74ACE0A70AEE7F45F95 /* GMMemeTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GMMemeTextView.h; sourceTree = "<group>"; };
 		EC44B7688223621A69AF1E43 /* NATouchThroughView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NATouchThroughView.h; sourceTree = "<group>"; };
 		EC44B77CCD2E574A5BCE1C0B /* GMSMSUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GMSMSUtil.h; sourceTree = "<group>"; };
@@ -220,6 +223,8 @@
 				EC44BD25B9D39FF7E5499727 /* NATouchThroughView.m */,
 				EC44BF5C87380C86CCBB488E /* GMSMSUtil.m */,
 				EC44B77CCD2E574A5BCE1C0B /* GMSMSUtil.h */,
+				EC44B42EC10B92CE1F107541 /* GMConstants.m */,
+				EC44B2FA7B5634CEF0DB6464 /* GMConstants.h */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -395,6 +400,7 @@
 				EC44B6EC165E6F9A2213597D /* NARootTouchThroughView.m in Sources */,
 				EC44B8A87484D012A76E851C /* NATouchThroughView.m in Sources */,
 				EC44B161C447252A4709C0D4 /* GMSMSUtil.m in Sources */,
+				EC44B65D19BEA9AEF3564DDB /* GMConstants.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -14,6 +14,7 @@
 #import "GMMemeTextView.h"
 #import "GMSMSUtil.h"
 #import <SDWebImage/UIImageView+WebCache.h>
+#import "GMConstants.h"
 
 static NSString *CellIdentifier = @"CellIdentifier";
 
@@ -43,7 +44,10 @@ static NSString *CellIdentifier = @"CellIdentifier";
             @"http://media.giphy.com/media/5HSYaZTcRpYnS/giphy.gif",
             @"http://media.giphy.com/media/11SiBP2RFeBCHC/giphy.gif"
     ];
-    
+
+    //TODO: Sarah - for local images
+    //[UIImage imageNamed:@"myImage"] - no need to add extension
+
     [self setupCollectionView];
     [self setupTopView];
     [self setupSendButton];
@@ -53,8 +57,8 @@ static NSString *CellIdentifier = @"CellIdentifier";
 {
     [super viewDidLayoutSubviews];
     //TODO: put this size in a global space
-    self.topView.frame = CGRectMake(0, 0, 300, 300);
-    self.topView.center = self.view.center;
+    self.topView.frame = CGRectMake((self.view.bounds.size.width / 2) - (kImageSize.width / 2), 70, kImageSize.width, kImageSize.height);
+//    self.topView.center = self.view.center;
     CGFloat buttonWidth = 125;
     CGFloat buttonX = (self.view.bounds.size.width / 2) - (buttonWidth / 2);
     self.sendButton.frame = CGRectMake(buttonX, self.topView.frame.size.height + self.topView.frame.origin.y + 20, buttonWidth, 35);
@@ -69,6 +73,8 @@ static NSString *CellIdentifier = @"CellIdentifier";
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     GMGIFCollectionViewCell *cell = (GMGIFCollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:CellIdentifier forIndexPath:indexPath];
+    //TODO: Sarah
+    //since we're not using urls cell.animatedImageView.image = [UIImage imageNamed:@""];
     NSString *url = self.dataSource[indexPath.row];
     [cell.animatedImageView sd_setImageWithURL:[NSURL URLWithString:url] placeholderImage:nil options:0 completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
 
@@ -142,13 +148,13 @@ static NSString *CellIdentifier = @"CellIdentifier";
     GMGIFCollectionViewCell *cell = (GMGIFCollectionViewCell *)[self.collectionView cellForItemAtIndexPath:self.selectedCellIndexPath];
     __weak typeof(self) weakSelf = self;
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    [GMGIFGenerationManager generateGIFForAnimatedBackgroundImage:cell.animatedImage topView:[self.topView copy] completion:^(NSURL *fileURL) {
+    [GMGIFGenerationManager generateGIFForAnimatedBackgroundImage:cell.animatedImageView.image topView:[self.topView copy] completion:^(NSURL *fileURL) {
         [MBProgressHUD hideHUDForView:weakSelf.view animated:YES];
         [weakSelf.smsUtil presentMessageControllerForFileAtURL:fileURL];
     } error:^(NSError **error) {
         //do error stuffs
         [MBProgressHUD hideHUDForView:weakSelf.view animated:YES];
-        //TODO: Add error alert view.
+        //TODO: Add error alert
     }];
 }
 

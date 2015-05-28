@@ -9,6 +9,8 @@
 
 #import "GMGIFCollectionViewCell.h"
 #import "UIColor+GIFMonsterColors.h"
+#import "GMConstants.h"
+
 
 @interface GMGIFCollectionViewCell()
 
@@ -23,8 +25,8 @@
     [super layoutSubviews];
     //for now we want to force the image to be 300/300
     //TODO: Make this dynamic using ratio category
-    self.animatedImageView.frame = CGRectMake(0, 0, 300, 300);
-    self.animatedImageView.center = self.contentView.center;
+    self.animatedImageView.frame = CGRectMake((self.bounds.size.width / 2) - (kImageSize.width / 2), 70, kImageSize.width, kImageSize.height);
+//    self.animatedImageView.center = self.contentView.center;
 }
 
 #pragma mark - Lazy Loading
@@ -36,17 +38,6 @@
         [self.contentView addSubview:_animatedImageView];
     }
     return _animatedImageView;
-}
-
-#pragma mark - Get/Set Overrides
-- (void)setAnimatedImage:(UIImage *)animatedImage
-{
-    self.animatedImageView.image = animatedImage;
-}
-
-- (UIImage *)animatedImage
-{
-    return self.animatedImageView.image;
 }
 
 @end
