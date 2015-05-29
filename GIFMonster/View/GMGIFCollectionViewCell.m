@@ -14,7 +14,7 @@
 
 @interface GMGIFCollectionViewCell()
 
-@property (nonatomic, strong, readwrite) UIImageView *animatedImageView;
+@property (nonatomic, strong, readwrite) FLAnimatedImageView *animatedImageView;
 
 @end
 
@@ -30,10 +30,10 @@
 }
 
 #pragma mark - Lazy Loading
-- (UIImageView *)animatedImageView
+- (FLAnimatedImageView *)animatedImageView
 {
     if (!_animatedImageView) {
-        _animatedImageView = [UIImageView new];
+        _animatedImageView = [FLAnimatedImageView new];
         _animatedImageView.backgroundColor = [UIColor gifsendbuttonbackgroundGreen];
         [self.contentView addSubview:_animatedImageView];
     }

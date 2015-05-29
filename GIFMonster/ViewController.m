@@ -15,6 +15,7 @@
 #import "GMSMSUtil.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 #import "GMConstants.h"
+#import "FLAnimatedImage.h"
 
 static NSString *CellIdentifier = @"CellIdentifier";
 
@@ -39,10 +40,10 @@ static NSString *CellIdentifier = @"CellIdentifier";
     self.selectedCellIndexPath = [NSIndexPath indexPathForRow:0 inSection:0];
 
     self.dataSource = @[
-            @"http://raphaelschaad.com/static/nyan.gif",
-            @"http://media.giphy.com/media/fA5fRLP2rMtP2/giphy.gif",
-            @"http://media.giphy.com/media/5HSYaZTcRpYnS/giphy.gif",
-            @"http://media.giphy.com/media/11SiBP2RFeBCHC/giphy.gif"
+            @"nyan",
+            @"taco_cat",
+            @"many_cats",
+            @"tiger_eating_meat"
     ];
 
     //TODO: Sarah - for local images
@@ -75,10 +76,15 @@ static NSString *CellIdentifier = @"CellIdentifier";
     GMGIFCollectionViewCell *cell = (GMGIFCollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:CellIdentifier forIndexPath:indexPath];
     //TODO: Sarah
     //since we're not using urls cell.animatedImageView.image = [UIImage imageNamed:@""];
-    NSString *url = self.dataSource[indexPath.row];
-    [cell.animatedImageView sd_setImageWithURL:[NSURL URLWithString:url] placeholderImage:nil options:0 completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+    NSString *imageName = self.dataSource[indexPath.row];
+    NSString *imagePath = [[NSBundle mainBundle] pathForResource:imageName ofType:@"gif"];
+    FLAnimatedImage *image = [FLAnimatedImage animatedImageWithGIFData:[NSData dataWithContentsOfFile:imagePath]];
+    
+    cell.animatedImageView.animatedImage = image;
+    //NSString *url = self.dataSource[indexPath.row];
+    //[cell.animatedImageView sd_setImageWithURL:[NSURL URLWithString:url] placeholderImage:nil options:0 completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
 
-    }];
+    //}];
     return cell;
 }
 

@@ -43,6 +43,7 @@
         _topTextField = [UITextField new];
         _topTextField.textAlignment = NSTextAlignmentCenter;
         _topTextField.font = [UIFont boldSystemFontOfSize:18];
+        _topTextField.delegate = self;
         _topTextField.textColor = [UIColor whiteColor];
         _topTextField.userInteractionEnabled = YES;
         [self addSubview:_topTextField];
@@ -88,8 +89,14 @@
 //http://stackoverflow.com/questions/433337/set-the-maximum-character-length-of-a-uitextfield
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
 {
-//    return textField.text.length < 9;
-    return [textField.text length] + string.length - range.length < 9;
+    if(range.length + range.location > textField.text.length)
+    {
+        return NO;
+    }
+    
+    NSUInteger newLength = [textField.text length] + [string length] - range.length;
+    return newLength <= 20;
 }
+
 
 @end

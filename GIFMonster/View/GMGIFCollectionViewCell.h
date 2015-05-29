@@ -8,9 +8,10 @@
 
 
 #import <UIKit/UIKit.h>
+#import "FLAnimatedImage.h"
 
 @interface GMGIFCollectionViewCell : UICollectionViewCell
 
-@property (nonatomic, strong, readonly) UIImageView *animatedImageView;
+@property (nonatomic, strong, readonly) FLAnimatedImageView *animatedImageView;
 
 @end
